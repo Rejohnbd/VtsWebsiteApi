@@ -3,6 +3,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
+// Add Route
+const userLogin = require('./api/routes/users')
+
 // Define App
 const app = express()
 
@@ -21,7 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('Hello World with Express'));
+// Use Route
+app.use('/login', userLogin)
 
 // Defice app.js to index.js
 module.exports = app;
