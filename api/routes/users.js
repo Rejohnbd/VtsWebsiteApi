@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
                             { expiresIn: "1h" }
                         )
 
-                        return res.status(201).json({
+                        return res.status(200).json({
                             message: "Login Successfully",
                             token: token,
                             user: {
