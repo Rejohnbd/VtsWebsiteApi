@@ -51,6 +51,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/active", (req, res) => {
+  AppScreenshoot.find({ image_active_status: 1 })
+    .exec()
+    .then(docs => {
+      return res.status(200).json(docs);
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err });
+    });
+});
+
 router.post("/", upload.single("image_appscreenshoot"), (req, res) => {
   const file = req.file;
   if (file) {

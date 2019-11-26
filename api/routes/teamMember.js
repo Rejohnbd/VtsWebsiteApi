@@ -51,6 +51,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/active", (req, res) => {
+  TeamMember.find({ user_active_status: 1 })
+    .exec()
+    .then(docs => {
+      return res.status(200).json(docs);
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err });
+    });
+});
+
 router.post("/", upload.single("image_team_member"), (req, res) => {
   const file = req.file;
   if (file) {
