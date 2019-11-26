@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 // Add Route
 const userLogin = require("./api/routes/users");
 const AppScreenshoot = require("./api/routes/appScreenshoot");
+const TeamMember = require("./api/routes/teamMember");
 
 // Define App
 const app = express();
@@ -48,6 +49,7 @@ app.use("/public", express.static("public"));
 // Use Route
 app.use("/login", userLogin);
 app.use("/appscreen", AppScreenshoot);
+app.use("/team", TeamMember);
 
 // Defice app.js to index.js
 module.exports = app;
