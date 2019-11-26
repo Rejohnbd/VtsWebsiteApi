@@ -91,4 +91,15 @@ router.post("/", upload.single("image_appscreenshoot"), (req, res) => {
   }
 });
 
+router.put("/:id/inactive", (req, res) => {
+  // console.log(req.params.id);
+  AppScreenshoot.updateOne({ _id: req.param.id }, { image_active_status: 0 })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
 module.exports = router;

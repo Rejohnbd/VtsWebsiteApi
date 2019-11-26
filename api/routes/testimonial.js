@@ -69,8 +69,8 @@ router.post("/", upload.single("image_client_comment"), (req, res) => {
     const newTestimonial = new Testimonial({
       _id: new mongoose.Types.ObjectId(),
       client_name: req.body.client_name,
+      client_organization_name: req.body.client_organization_name,
       client_comment: req.body.client_comment,
-      twitter_link: req.body.twitter_link,
       comment_active_status: req.body.comment_active_status,
       image_client_comment: pathArray[1]
     });
