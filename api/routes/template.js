@@ -58,4 +58,20 @@ router.post("/address", (req, res) => {
     });
 });
 
+router.post("/social", (req, res) => {
+  Template.updateOne({
+    $set: {
+      facebook_link: req.body.facebook_link,
+      twitter_link: req.body.twitter_link,
+      linkedin_link: req.body.linkedin_link
+    }
+  })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
 module.exports = router;

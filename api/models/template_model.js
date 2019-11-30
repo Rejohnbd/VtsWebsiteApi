@@ -6,6 +6,9 @@ const templateSchema = mongoose.Schema({
   contact_number_two: String,
   contact_email_one: String,
   contact_email_two: String,
-  contact_address: String
+  contact_address: String,
+  facebook_link: String,
+  twitter_link: String,
+  linkedin_link: String
 });
 module.exports = mongoose.model("Template", templateSchema);
