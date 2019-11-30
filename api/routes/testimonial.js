@@ -91,4 +91,35 @@ router.post("/", upload.single("image_client_comment"), (req, res) => {
   }
 });
 
+router.put("/:id/active", (req, res) => {
+  Testimonial.updateOne({ _id: req.params.id }, { comment_active_status: 1 })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
+router.put("/:id/inactive", (req, res) => {
+  Testimonial.updateOne({ _id: req.params.id }, { comment_active_status: 0 })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  Testimonial.deleteOne({ _id: req.params.id })
+    .exec()
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
 module.exports = router;

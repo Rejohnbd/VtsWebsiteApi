@@ -7,6 +7,8 @@ const userLogin = require("./api/routes/users");
 const AppScreenshoot = require("./api/routes/appScreenshoot");
 const TeamMember = require("./api/routes/teamMember");
 const Testimonial = require("./api/routes/testimonial");
+const Question = require("./api/routes/question");
+const Template = require("./api/routes/template");
 
 // Define App
 const app = express();
@@ -52,6 +54,8 @@ app.use("/login", userLogin);
 app.use("/appscreen", AppScreenshoot);
 app.use("/team", TeamMember);
 app.use("/testimonial", Testimonial);
+app.use("/question", Question);
+app.use("/template", Template);
 
 // Defice app.js to index.js
 module.exports = app;

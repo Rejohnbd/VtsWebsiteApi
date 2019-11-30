@@ -91,9 +91,29 @@ router.post("/", upload.single("image_appscreenshoot"), (req, res) => {
   }
 });
 
+router.put("/:id/active", (req, res) => {
+  AppScreenshoot.updateOne({ _id: req.params.id }, { image_active_status: 1 })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
 router.put("/:id/inactive", (req, res) => {
-  // console.log(req.params.id);
-  AppScreenshoot.updateOne({ _id: req.param.id }, { image_active_status: 0 })
+  AppScreenshoot.updateOne({ _id: req.params.id }, { image_active_status: 0 })
+    .then(doc => {
+      return res.status(200).json(doc);
+    })
+    .catch(err => {
+      return res.status(204).json({ error: err });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  AppScreenshoot.deleteOne({ _id: req.params.id })
+    .exec()
     .then(doc => {
       return res.status(200).json(doc);
     })
